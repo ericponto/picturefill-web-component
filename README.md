@@ -1,7 +1,9 @@
 # Picturefill Web Component
 A Responsive Images approach that you can use today in about as many browsers as the picture element is supported.
 
-**Demo URL:** [http://scottjehl.github.com/picturefill/](http://scottjehl.github.com/picturefill/)
+It is a fork of <a href="http://github.com/scottjehl/picturefill">picturefill</a> by Scott Jehl, so works in a similar fashion.
+
+**Demo URL:** [http://ericponto.github.com/picturefill-web-component/](http://ericponto.github.com/picturefill-web-component/)
 
 **Note:** Picturefill Web Component only works in browser with support for HTML Imports, the Shadow DOM, and custom Elements. Your best bet is to turn on all the experimental features in Chrome.
 
