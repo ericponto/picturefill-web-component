@@ -28,7 +28,7 @@
 	PictureFillProto.createdCallback = function() {
 		var me = this,
 			root = this.createShadowRoot(),
-			template = document.getElementById("picturefill-template");
+			template = document.currentScript.ownerDocument.getElementById("picturefill-template");
 		
 		root.appendChild (template.content.cloneNode(true) );
 		
