@@ -1,0 +1,46 @@
+<template id="picturefill-template">
+	<img src="" />
+</template>
+
+<script>
+
+	var PictureFillProto = Object.create(HTMLImageElement.prototype);
+
+	PictureFillProto.setImgSource = function() {
+		var sources = this.getElementsByTagName( "span" ),
+			matches = [];
+
+			// See if which sources match
+			for( var j = 0, jl = sources.length; j < jl; j++ ){
+				var media = sources[ j ].getAttribute( "data-media" );
+				// if there's no media specified, OR window.matchMedia is supported 
+				if( !media || ( window.matchMedia && window.matchMedia( media ).matches ) ){
+					matches.push( sources[ j ] );
+				}
+			}
+
+		if( matches.length ){
+			var matchedEl = matches.pop();
+			this.shadowRoot.getElementsByTagName("img")[0].src = matchedEl.getAttribute( "data-src" );
+		}
+	};
+
+	PictureFillProto.createdCallback = function() {
+		var me = this,
+			root = this.createShadowRoot(),
+			template = document.getElementById("picturefill-template");
+		
+		root.appendChild (template.content.cloneNode(true) );
+		
+		this.setImgSource();
+
+		window.addEventListener("resize", function() {
+			me.setImgSource();
+		}, false);
+	};
+
+	document.register("picture-fill", {
+		prototype: PictureFillProto
+	});
+
+</script>
